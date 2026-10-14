@@ -17,8 +17,8 @@ export const site = {
   // SEO / OG description
   description:
     "Software engineer building fast, tactile, design-led product interfaces. Portfolio, selected work, and ways to get in touch.",
-  // Canonical deployed URL (update after deploying to Vercel)
-  url: "https://your-domain.vercel.app",
+  // Canonical deployed URL
+  url: "https://portfolio-site-jet-nine-19.vercel.app",
 
   // ── Links (real where known) ──────────────────────────────────────
   email: "marvellous@centricai.io",

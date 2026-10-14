@@ -5,6 +5,8 @@ over clean, confident layout. Built with **Next.js (App Router) + TypeScript**,
 **Tailwind CSS**, **GSAP** (ScrollTrigger + SplitText) and **Lenis** smooth
 scroll.
 
+**Live site:** https://portfolio-site-jet-nine-19.vercel.app/
+
 ## Features
 
 - **Preloader** — 0→100 counter, then a masked panel wipe reveals the hero.
