@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Portfolio Open Graph image">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <circle cx="1000" cy="140" r="260" fill="#E7FE55" opacity="0.18"/>
+  <text x="80" y="300" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="700" fill="#F5F5F0">[[YOUR NAME]]</text>
+  <text x="84" y="370" font-family="Arial, Helvetica, sans-serif" font-size="34" letter-spacing="4" fill="#8A8A82">SOFTWARE ENGINEER · DESIGN-LED PRODUCT</text>
+  <rect x="84" y="420" width="60" height="6" fill="#E7FE55"/>
+  <text x="84" y="560" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="6" fill="#8A8A82">PLACEHOLDER — REPLACE /public/og-image.svg</text>
+</svg>

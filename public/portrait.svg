@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 960" width="720" height="960" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141414"/>
+      <stop offset="1" stop-color="#0A0A0A"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="960" fill="url(#bg)"/>
+  <circle cx="360" cy="360" r="150" fill="#1c1c1c"/>
+  <path d="M180 820c0-120 80-200 180-200s180 80 180 200z" fill="#1c1c1c"/>
+  <circle cx="600" cy="150" r="120" fill="#E7FE55" opacity="0.18"/>
+  <text x="360" y="900" font-family="Arial, sans-serif" font-size="24" letter-spacing="4" fill="#8A8A82" text-anchor="middle">SAVE YOUR PHOTO AS /public/portrait.jpg</text>
+</svg>
