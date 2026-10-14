@@ -13,7 +13,7 @@ export const site = {
   status: "Open to internships & work",
   // 2–3 sentence about blurb, in your voice
   about:
-    "I’m a software engineer who cares about the pixels and the plumbing in equal measure. I like turning fuzzy product ideas into fast, tactile interfaces — and I sweat the details most people never notice. Currently interning and looking for design-led teams to build the next thing with.",
+    "I design and build websites that turn visitors into customers. Most sites look fine but quietly lose sales — unclear messaging, slow pages, forgettable first impressions. I fix that with bold, intriguing designs that hook people in the first few seconds, backed by conversion-focused layouts and fast, polished code that guides them straight to your call to action. If your site isn’t pulling its weight, let’s build one that does.",
   // SEO / OG description
   description:
     "Software engineer building fast, tactile, design-led product interfaces. Portfolio, selected work, and ways to get in touch.",
