@@ -107,9 +107,11 @@ function ProjectCard({ project }: { project: Project }) {
           sizes="(max-width: 768px) 100vw, 46vw"
           className="object-cover transition-transform duration-700 ease-expo group-hover:scale-105"
         />
-        <span className="absolute right-4 top-4 rounded-full border border-line bg-background/60 px-3 py-1 text-xs uppercase tracking-widest text-muted backdrop-blur">
-          {project.year}
-        </span>
+        {project.year && (
+          <span className="absolute right-4 top-4 rounded-full border border-line bg-background/60 px-3 py-1 text-xs uppercase tracking-widest text-muted backdrop-blur">
+            {project.year}
+          </span>
+        )}
       </div>
 
       {/* Body */}
@@ -123,11 +125,17 @@ function ProjectCard({ project }: { project: Project }) {
 
         <p className="mt-3 max-w-md text-muted">{project.description}</p>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
-          <span className="text-foreground">{project.role}</span>
-          <span className="h-1 w-1 rounded-full bg-line" />
-          <span>{project.stack.join(" · ")}</span>
-        </div>
+        {(project.role || project.stack?.length || project.stages?.length) && (
+          <div className="mt-4 space-y-1 text-sm text-muted">
+            {project.role && <p>Role: {project.role}</p>}
+            {project.stack?.length && (
+              <p>Stack: {project.stack.join(" · ")}</p>
+            )}
+            {project.stages?.length && (
+              <p>Stages: {project.stages.join(" · ")}</p>
+            )}
+          </div>
+        )}
 
         {/* Two required buttons */}
         <div className="mt-auto flex gap-3 pt-8">
@@ -140,15 +148,17 @@ function ProjectCard({ project }: { project: Project }) {
           >
             View Live
           </a>
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor
-            className="flex-1 rounded-full border border-line px-5 py-3 text-center text-sm font-medium transition-colors hover:border-foreground"
-          >
-            View Code
-          </a>
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor
+              className="flex-1 rounded-full border border-line px-5 py-3 text-center text-sm font-medium transition-colors hover:border-foreground"
+            >
+              View Code
+            </a>
+          )}
         </div>
       </div>
     </article>

@@ -11,26 +11,25 @@ export type Project = {
   slug: string;
   name: string;
   description: string;
-  role: string;
-  stack: string[];
+  role?: string;
+  stack?: string[];
+  stages?: string[];
   image: string; // path under /public
   liveUrl: string;
-  repoUrl: string;
-  year: string;
+  repoUrl?: string;
+  year?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "aurora",
-    name: "Aurora",
+    slug: "lens-ai",
+    name: "LENS AI",
     description:
-      "A real-time collaborative canvas with buttery multiplayer cursors and offline-first sync.",
-    role: "Full-stack · Lead",
-    stack: ["Next.js", "TypeScript", "WebSockets", "Postgres"],
-    image: "/projects/aurora.svg",
-    liveUrl: "https://example.com", // [[live URL]]
-    repoUrl: "https://github.com/yourusername/aurora", // [[repo URL]]
-    year: "2025",
+      "An AI-powered decision platform that helps businesses make better decisions through modules spanning human-led, AI-assisted, and AI-executed workflows.",
+    stack: ["Next.js", "NestJS", "PostgreSQL", "TypeScript"],
+    stages: ["Human-led", "AI-assisted", "AI-executed"],
+    image: "/projects/command center proj.PNG",
+    liveUrl: "https://lens.centricos.com/auth",
   },
   {
     slug: "pulse",

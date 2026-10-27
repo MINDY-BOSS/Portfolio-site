@@ -12,6 +12,7 @@ type Item = { label: string; hash: string };
 const ITEMS: Item[] = [
   { label: "Home", hash: "" },
   { label: "About", hash: "about" },
+  { label: "Projects", hash: "work" },
   { label: "Contact", hash: "contact" },
 ];
 
@@ -24,7 +25,7 @@ const initials = site.name
 
 /**
  * Nav — a fixed top bar (initials + hamburger) that opens a full-screen menu
- * housing Home / About / Contact. On the home page, links smooth-scroll via
+ * housing Home / About / Projects / Contact. On the home page, links smooth-scroll via
  * Lenis; elsewhere they navigate to /#section. Fully animated with GSAP and
  * gated by prefers-reduced-motion.
  */

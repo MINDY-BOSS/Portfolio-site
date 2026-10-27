@@ -54,25 +54,39 @@ export default async function ProjectPage({
         <h1 className="font-display text-huge font-bold uppercase leading-none">
           {project.name}
         </h1>
-        <span className="text-sm uppercase tracking-[0.2em] text-muted">
-          {project.year}
-        </span>
+        {project.year && (
+          <span className="text-sm uppercase tracking-[0.2em] text-muted">
+            {project.year}
+          </span>
+        )}
       </div>
 
       <p className="mt-8 max-w-2xl text-xl text-muted md:text-2xl">
         {project.description}
       </p>
 
-      <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm">
-        <div>
-          <span className="block text-muted">Role</span>
-          <span>{project.role}</span>
+      {(project.role || project.stack?.length || project.stages?.length) && (
+        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm">
+          {project.role && (
+            <div>
+              <span className="block text-muted">Role</span>
+              <span>{project.role}</span>
+            </div>
+          )}
+          {project.stack?.length ? (
+            <div>
+              <span className="block text-muted">Stack</span>
+              <span>{project.stack.join(" · ")}</span>
+            </div>
+          ) : null}
+          {project.stages?.length ? (
+            <div>
+              <span className="block text-muted">Stages</span>
+              <span>{project.stages.join(" · ")}</span>
+            </div>
+          ) : null}
         </div>
-        <div>
-          <span className="block text-muted">Stack</span>
-          <span>{project.stack.join(" · ")}</span>
-        </div>
-      </div>
+      )}
 
       <div className="mt-12 flex gap-3">
         <a
@@ -83,14 +97,16 @@ export default async function ProjectPage({
         >
           View Live ↗
         </a>
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-line px-6 py-3 text-sm font-medium transition-colors hover:border-foreground"
-        >
-          View Code ↗
-        </a>
+        {project.repoUrl && (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-line px-6 py-3 text-sm font-medium transition-colors hover:border-foreground"
+          >
+            View Code ↗
+          </a>
+        )}
       </div>
 
       <div className="relative mt-16 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line">

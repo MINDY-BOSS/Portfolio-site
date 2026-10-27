@@ -1,7 +1,0 @@
-PLACEHOLDER RÉSUMÉ
-
-Replace this by dropping your real file at /public/resume.pdf, then confirm the
-download link points to "/resume.pdf" in /data/site.ts (site.resume).
-
-(This .txt exists only so the repo has something at /public — delete it once
-your real resume.pdf is in place.)

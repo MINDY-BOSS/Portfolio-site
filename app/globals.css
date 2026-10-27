@@ -13,6 +13,34 @@
   --line: rgba(245, 245, 240, 0.12);
 }
 
+@property --about-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.about-image-frame {
+  --about-border-angle: 0deg;
+  background: conic-gradient(
+    from var(--about-border-angle),
+    rgba(245, 245, 240, 0.12) 0%,
+    rgba(245, 245, 240, 0.12) 72%,
+    rgba(231, 254, 85, 0.45) 82%,
+    var(--accent) 86%,
+    rgba(255, 255, 255, 0.95) 88%,
+    rgba(231, 254, 85, 0.45) 91%,
+    rgba(245, 245, 240, 0.12) 100%
+  );
+  box-shadow: 0 0 18px rgba(231, 254, 85, 0.14);
+  animation: about-border-orbit 5s linear infinite;
+}
+
+@keyframes about-border-orbit {
+  to {
+    --about-border-angle: 360deg;
+  }
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;

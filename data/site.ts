@@ -13,7 +13,7 @@ export const site = {
   status: "Open to internships & work",
   // 2–3 sentence about blurb, in your voice
   about:
-    "I design and build websites that turn visitors into customers. Most sites look fine but quietly lose sales — unclear messaging, slow pages, forgettable first impressions. I fix that with bold, intriguing designs that hook people in the first few seconds, backed by conversion-focused layouts and fast, polished code that guides them straight to your call to action. If your site isn’t pulling its weight, let’s build one that does.",
+    "I help teams as a core helping hand to launch new products and improve existing products with software built around real business needs from planning to deployment.\n\nI'm Ayinde Marvellous, a software engineer who turns requirements into practical, reliable solutions.",
   // SEO / OG description
   description:
     "Software engineer building fast, tactile, design-led product interfaces. Portfolio, selected work, and ways to get in touch.",
@@ -21,10 +21,10 @@ export const site = {
   url: "https://portfolio-site-jet-nine-19.vercel.app",
 
   // ── Links (real where known) ──────────────────────────────────────
-  email: "marvellous@centricai.io",
+  email: "ayindemarvellous04@gmail.com",
   github: "https://github.com/MINDY-BOSS",
   linkedin: "linkedin.com/in/marvellous-ayinde-536729265",
-  resume: "/resume.pdf",
+  resume: "/Ayinde%20Marvellous%20resume.pdf",
 } as const;
 
 export type Site = typeof site;

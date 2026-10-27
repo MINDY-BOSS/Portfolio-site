@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useIsomorphicLayoutEffect } from "@/hooks/useGsapContext";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
 import { site } from "@/data/site";
@@ -73,12 +74,25 @@ export default function About() {
       <p className="mb-10 text-sm uppercase tracking-[0.2em] text-muted">
         (About)
       </p>
-      <p
-        ref={copy}
-        className="max-w-4xl font-display text-[clamp(1.5rem,3.5vw,2.75rem)] font-semibold leading-[1.15]"
-      >
-        {site.about}
-      </p>
+      <div className="grid items-start gap-12 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.65fr)] md:gap-16">
+        <p
+          ref={copy}
+          className="max-w-4xl whitespace-pre-line font-display text-[clamp(1.5rem,3.5vw,2.75rem)] font-semibold leading-[1.15]"
+        >
+          {site.about}
+        </p>
+        <div className="about-image-frame relative isolate aspect-[3/4] w-full p-[2px] md:mt-2">
+          <div className="absolute inset-[2px] overflow-hidden">
+            <Image
+              src="/portfolio-image.jpeg"
+              alt={`${site.name} portrait`}
+              fill
+              sizes="(min-width: 768px) 35vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
