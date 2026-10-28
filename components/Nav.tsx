@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useIsomorphicLayoutEffect } from "@/hooks/useGsapContext";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { site } from "@/data/site";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const PRELOADER_SESSION_KEY = "portfolio-preloader-complete";
 
@@ -105,7 +106,9 @@ export default function Nav() {
   return (
     <>
       {/* Top bar */}
-      <header className="fixed inset-x-0 top-0 z-[60] flex items-center justify-between px-6 py-5 md:px-10">
+      <header
+        className={`fixed inset-x-0 top-0 flex items-center justify-between px-6 py-5 md:px-10 ${open ? "z-[71]" : "z-[60]"}`}
+      >
         <button
           onClick={() => go({ label: "Home", hash: "" })}
           data-cursor
@@ -115,29 +118,32 @@ export default function Nav() {
           {initials || "PF"}
         </button>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          data-cursor
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="relative z-[71] flex h-10 w-10 flex-col items-center justify-center gap-[6px]"
-        >
-          <span
-            className={`block h-[2px] w-7 bg-foreground transition-transform duration-300 ease-expo ${
-              open ? "translate-y-[8px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-7 bg-foreground transition-opacity duration-200 ${
-              open ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-7 bg-foreground transition-transform duration-300 ease-expo ${
-              open ? "-translate-y-[8px] -rotate-45" : ""
-            }`}
-          />
-        </button>
+        <div className="relative z-[71] flex items-center gap-3">
+          <ThemeToggle size="sm" />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            data-cursor
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="relative flex h-10 w-10 flex-col items-center justify-center gap-[6px]"
+          >
+            <span
+              className={`block h-[2px] w-7 bg-foreground transition-transform duration-300 ease-expo ${
+                open ? "translate-y-[8px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-7 bg-foreground transition-opacity duration-200 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-7 bg-foreground transition-transform duration-300 ease-expo ${
+                open ? "-translate-y-[8px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </header>
 
       {/* Full-screen menu overlay */}
@@ -153,7 +159,7 @@ export default function Nav() {
                 <button
                   onClick={() => go(item)}
                   data-cursor
-                  className="font-display text-huge font-bold uppercase leading-[1.05] transition-colors hover:text-accent"
+                  className="font-display text-[clamp(2rem,8vw,7rem)] font-bold uppercase leading-[1.05] transition-colors hover:text-accent sm:text-huge"
                 >
                   <span className="mr-4 align-top text-base text-muted">0{i + 1}</span>
                   {item.label}

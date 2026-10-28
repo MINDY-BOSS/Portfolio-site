@@ -17,10 +17,15 @@ import { prefersReducedMotion } from "@/lib/gsap";
  */
 
 // Site palette (see tailwind.config.ts): accent lime, off-white, dim lime.
-const PALETTE = [
+const DARK_PALETTE = [
   { r: 231, g: 254, b: 85 },
   { r: 245, g: 245, b: 240 },
   { r: 176, g: 194, b: 60 },
+];
+const LIGHT_PALETTE = [
+  { r: 38, g: 48, b: 19 },
+  { r: 91, g: 113, b: 19 },
+  { r: 102, g: 125, b: 10 },
 ];
 
 function randomOffscreenPos(x: number, y: number, mag: number) {
@@ -50,7 +55,13 @@ export default function HeroParticles({ words }: { words: string[] }) {
       canvas.height = Math.max(1, Math.floor(rect.height));
     };
 
-    const pickColor = () => PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    const pickColor = () => {
+      const palette =
+        document.documentElement.dataset.theme === "light"
+          ? LIGHT_PALETTE
+          : DARK_PALETTE;
+      return palette[Math.floor(Math.random() * palette.length)];
+    };
 
     const nextWord = (word: string) => {
       const off = document.createElement("canvas");
@@ -122,7 +133,10 @@ export default function HeroParticles({ words }: { words: string[] }) {
     const animate = () => {
       const ctx = canvas.getContext("2d")!;
       // Near-black trail fill → matches the page bg and leaves motion streaks.
-      ctx.fillStyle = "rgba(10, 10, 10, 0.2)";
+      ctx.fillStyle =
+        document.documentElement.dataset.theme === "light"
+          ? "rgba(244, 246, 239, 0.2)"
+          : "rgba(10, 10, 10, 0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let i = particles.length - 1; i >= 0; i--) {
@@ -146,6 +160,14 @@ export default function HeroParticles({ words }: { words: string[] }) {
     nextWord(words[0]);
     animate();
 
+    const themeObserver = new MutationObserver(() => {
+      nextWord(words[wordRef.current]);
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
     // Re-fit + re-rasterise on resize (debounced) so the bg never breaks.
     let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
@@ -160,6 +182,7 @@ export default function HeroParticles({ words }: { words: string[] }) {
     return () => {
       cancelAnimationFrame(rafRef.current);
       clearTimeout(resizeTimer);
+      themeObserver.disconnect();
       window.removeEventListener("resize", onResize);
       particlesRef.current = [];
     };

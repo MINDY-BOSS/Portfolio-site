@@ -30,9 +30,10 @@ export default function ProjectsScroll() {
       const mm = gsap.matchMedia();
 
       // ── DESKTOP: pinned horizontal scrub ──────────────────────────
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
         const el = track.current!;
-        const amount = () => el.scrollWidth - window.innerWidth;
+        const amount = () => Math.max(0, el.scrollWidth - el.clientWidth);
+        if (amount() === 0) return;
 
         const tween = gsap.to(el, {
           x: () => -amount(),
@@ -77,15 +78,18 @@ export default function ProjectsScroll() {
           <br />
           Work
         </h2>
-        <span className="hidden text-sm uppercase tracking-[0.2em] text-muted md:block">
+        <span className="hidden text-sm uppercase tracking-[0.2em] text-muted md:block lg:hidden">
           {projects.length.toString().padStart(2, "0")} projects — scroll →
+        </span>
+        <span className="hidden text-sm uppercase tracking-[0.2em] text-muted lg:block">
+          {projects.length.toString().padStart(2, "0")} projects
         </span>
       </div>
 
       {/* Horizontal track (desktop) / vertical stack (mobile) */}
       <div
         ref={track}
-        className="flex flex-col gap-6 px-6 md:h-[70vh] md:flex-row md:items-stretch md:gap-8 md:px-10"
+        className="flex flex-col gap-6 px-6 md:h-[70vh] md:flex-row md:items-stretch md:gap-8 md:px-10 lg:justify-center"
       >
         {projects.map((p) => (
           <ProjectCard key={p.slug} project={p} />
@@ -97,7 +101,7 @@ export default function ProjectsScroll() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="project-card group flex w-full shrink-0 flex-col overflow-hidden rounded-2xl border border-line bg-white/[0.02] md:w-[70vw] lg:w-[46vw] xl:w-[38vw]">
+    <article className="project-card group flex w-full shrink-0 flex-col overflow-hidden rounded-2xl border border-line bg-white/[0.02] md:w-[70vw] lg:w-[calc(50vw_-_3.5rem)] xl:w-[38vw]">
       {/* Preview image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image
@@ -145,7 +149,7 @@ function ProjectCard({ project }: { project: Project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor
-                className="flex-1 rounded-full bg-accent px-5 py-3 text-center text-sm font-medium text-black transition-transform hover:scale-[1.02]"
+                className="flex-1 rounded-full bg-accent px-5 py-3 text-center text-sm font-medium text-background transition-transform hover:scale-[1.02]"
               >
                 View Live
               </a>

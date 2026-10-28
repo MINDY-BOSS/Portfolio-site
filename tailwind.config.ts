@@ -15,11 +15,11 @@ const config: Config = {
     extend: {
       colors: {
         // ── EDIT ME: the whole palette ─────────────────────────────
-        background: "#0A0A0A", // near-black
-        foreground: "#F5F5F0", // off-white
-        accent: "#E7FE55", // acid lime — used sparingly for emphasis
-        muted: "#8A8A82", // dimmed text
-        line: "rgba(245,245,240,0.12)", // hairline borders
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        accent: "var(--accent)",
+        muted: "var(--muted)",
+        line: "var(--line)",
       },
       fontFamily: {
         // Display face loaded from Fontshare, body from next/font (see layout.tsx)

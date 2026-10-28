@@ -83,7 +83,7 @@ export default function CTA() {
           target="_blank"
           rel="noopener noreferrer"
           strength={0.5}
-          className="rounded-full bg-foreground px-10 py-6 text-lg font-medium text-black transition-colors"
+          className="rounded-full bg-foreground px-10 py-6 text-lg font-medium text-background transition-colors"
         >
           <GitHubIcon />
           GitHub ↗
@@ -116,9 +116,9 @@ export default function CTA() {
         <a
           href={`mailto:${site.email}`}
           data-cursor
-          className="group inline-flex items-center gap-2 transition-colors hover:text-accent"
+          className="group inline-flex min-w-0 max-w-full items-center gap-2 transition-colors hover:text-accent"
         >
-          <span className="underline-offset-4 group-hover:underline">
+          <span className="min-w-0 break-words underline-offset-4 group-hover:underline">
             {site.email}
           </span>
           →

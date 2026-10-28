@@ -95,7 +95,7 @@ export default async function ProjectPage({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-black transition-transform hover:scale-[1.02]"
+              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-background transition-transform hover:scale-[1.02]"
             >
               View Live ↗
             </a>

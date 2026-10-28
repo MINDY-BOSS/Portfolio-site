@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="mt-6 text-muted">This page drifted off the grid.</p>
       <TransitionLink
         href="/"
-        className="mt-10 rounded-full bg-accent px-6 py-3 text-sm font-medium text-black"
+        className="mt-10 rounded-full bg-accent px-6 py-3 text-sm font-medium text-background"
       >
         ← Back home
       </TransitionLink>
