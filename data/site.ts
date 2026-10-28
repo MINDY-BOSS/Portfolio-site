@@ -13,7 +13,7 @@ export const site = {
   status: "Open to internships & work",
   // 2–3 sentence about blurb, in your voice
   about:
-    "I help teams as a core helping hand to launch new products and improve existing products with software built around real business needs from planning to deployment.\n\nI'm Ayinde Marvellous, a software engineer who turns requirements into practical, reliable solutions.",
+    "I help teams as a core helping hand to launch new products and improve existing products with software built around real business needs through modern frameworks from planning to deployment.\n\nI'm Ayinde Marvellous, a software engineer who turns your requirements as a major priority into practical, reliable solutions.",
   // SEO / OG description
   description:
     "Software engineer building fast, tactile, design-led product interfaces. Portfolio, selected work, and ways to get in touch.",
