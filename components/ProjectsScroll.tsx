@@ -137,18 +137,20 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
 
-        {/* Two required buttons */}
-        <div className="mt-auto flex gap-3 pt-8">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor
-            className="flex-1 rounded-full bg-accent px-5 py-3 text-center text-sm font-medium text-black transition-transform hover:scale-[1.02]"
-          >
-            View Live
-          </a>
-          {project.repoUrl && (
+        {(project.liveUrl || project.repoUrl) && (
+          <div className="mt-auto flex gap-3 pt-8">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor
+                className="flex-1 rounded-full bg-accent px-5 py-3 text-center text-sm font-medium text-black transition-transform hover:scale-[1.02]"
+              >
+                View Live
+              </a>
+            )}
+            {project.repoUrl && (
             <a
               href={project.repoUrl}
               target="_blank"
@@ -158,8 +160,9 @@ function ProjectCard({ project }: { project: Project }) {
             >
               View Code
             </a>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </article>
   );

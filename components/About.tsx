@@ -81,7 +81,7 @@ export default function About() {
         >
           {site.about}
         </p>
-        <div className="about-image-frame relative isolate aspect-[3/4] w-full p-[2px] md:mt-2">
+        <div className="image-light-frame relative isolate aspect-[3/4] w-full p-[2px] md:mt-2">
           <div className="absolute inset-[2px] overflow-hidden">
             <Image
               src="/portfolio-image.jpeg"

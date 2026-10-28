@@ -13,16 +13,16 @@
   --line: rgba(245, 245, 240, 0.12);
 }
 
-@property --about-border-angle {
+@property --image-border-angle {
   syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
 
-.about-image-frame {
-  --about-border-angle: 0deg;
+.image-light-frame {
+  --image-border-angle: 0deg;
   background: conic-gradient(
-    from var(--about-border-angle),
+    from var(--image-border-angle),
     rgba(245, 245, 240, 0.12) 0%,
     rgba(245, 245, 240, 0.12) 72%,
     rgba(231, 254, 85, 0.45) 82%,
@@ -32,12 +32,12 @@
     rgba(245, 245, 240, 0.12) 100%
   );
   box-shadow: 0 0 18px rgba(231, 254, 85, 0.14);
-  animation: about-border-orbit 5s linear infinite;
+  animation: image-border-orbit 5s linear infinite;
 }
 
-@keyframes about-border-orbit {
+@keyframes image-border-orbit {
   to {
-    --about-border-angle: 360deg;
+    --image-border-angle: 360deg;
   }
 }
 

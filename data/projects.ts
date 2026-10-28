@@ -15,7 +15,7 @@ export type Project = {
   stack?: string[];
   stages?: string[];
   image: string; // path under /public
-  liveUrl: string;
+  liveUrl?: string;
   repoUrl?: string;
   year?: string;
 };
@@ -31,6 +31,16 @@ export const projects: Project[] = [
     image: "/projects/command center proj.PNG",
     liveUrl: "https://lens.centricos.com/auth",
   },
+  {
+    slug: "job-tracker",
+    name: "JOB TRACKER",
+    description:
+      "A job application tracker that keeps every opportunity organized in one pipeline. Track company, role, status, notes, and deadlines, then follow each application from submission through interview, rejection, or offer.",
+    stack: ["Next.js", "NestJS", "Prisma ORM", "TypeScript"],
+    image: "/projects/jobtracker.PNG",
+    liveUrl: "https://job-app-tracker-9571.vercel.app/",
+  },
+  /* Inactive boilerplate projects
   {
     slug: "pulse",
     name: "Pulse",
@@ -67,6 +77,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/yourusername/drift",
     year: "2023",
   },
+  */
 ];
 
 export const getProject = (slug: string) =>

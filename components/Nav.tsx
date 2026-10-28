@@ -6,6 +6,8 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useGsapContext";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { site } from "@/data/site";
 
+const PRELOADER_SESSION_KEY = "portfolio-preloader-complete";
+
 type Item = { label: string; hash: string };
 
 // Sections the hamburger navigates to. `hash` empty string = top of page.
@@ -35,6 +37,12 @@ export default function Nav() {
   const linksWrap = useRef<HTMLUListElement>(null);
   const pathname = usePathname();
   const router = useRouter();
+
+  useIsomorphicLayoutEffect(() => {
+    if (pathname !== "/") {
+      sessionStorage.setItem(PRELOADER_SESSION_KEY, "true");
+    }
+  }, [pathname]);
 
   // Open/close animation, driven by `open`.
   useIsomorphicLayoutEffect(() => {

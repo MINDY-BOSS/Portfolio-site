@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/useGsapContext";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
+const PRELOADER_SESSION_KEY = "portfolio-preloader-complete";
+
 /**
  * Preloader — a 0→100 counter, then a masked panel wipe that reveals the page.
  *
@@ -21,7 +23,14 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
   const [gone, setGone] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
+    if (sessionStorage.getItem(PRELOADER_SESSION_KEY)) {
+      setGone(true);
+      onDone();
+      return;
+    }
+
     if (prefersReducedMotion()) {
+      sessionStorage.setItem(PRELOADER_SESSION_KEY, "true");
       setGone(true);
       onDone();
       return;
@@ -34,6 +43,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       const counter = { value: 0 };
       const tl = gsap.timeline({
         onComplete: () => {
+          sessionStorage.setItem(PRELOADER_SESSION_KEY, "true");
           document.body.style.overflow = "";
           setGone(true);
           onDone();

@@ -88,16 +88,19 @@ export default async function ProjectPage({
         </div>
       )}
 
-      <div className="mt-12 flex gap-3">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-black transition-transform hover:scale-[1.02]"
-        >
-          View Live ↗
-        </a>
-        {project.repoUrl && (
+      {(project.liveUrl || project.repoUrl) && (
+        <div className="mt-12 flex gap-3">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-black transition-transform hover:scale-[1.02]"
+            >
+              View Live ↗
+            </a>
+          )}
+          {project.repoUrl && (
           <a
             href={project.repoUrl}
             target="_blank"
@@ -106,18 +109,21 @@ export default async function ProjectPage({
           >
             View Code ↗
           </a>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
-      <div className="relative mt-16 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line">
-        <Image
-          src={project.image}
-          alt={`${project.name} preview`}
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
+      <div className="image-light-frame relative isolate mt-16 aspect-[16/9] w-full rounded-2xl p-[2px]">
+        <div className="absolute inset-[2px] overflow-hidden rounded-[14px]">
+          <Image
+            src={project.image}
+            alt={`${project.name} preview`}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </main>
   );
