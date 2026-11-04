@@ -146,6 +146,26 @@ export default function Hero({ start }: { start: boolean }) {
           <span className="hidden md:inline">·</span>
           <span>Design-led product interfaces</span>
         </div>
+
+        <div className="hero-fade mt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm uppercase tracking-[0.16em]">
+          <a
+            href={site.resume}
+            download
+            data-cursor
+            className="inline-flex items-center gap-2 transition-colors hover:text-accent"
+          >
+            Download résumé <span aria-hidden="true">↓</span>
+          </a>
+          <a
+            href={site.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor
+            className="inline-flex items-center gap-2 text-muted transition-colors hover:text-accent"
+          >
+            View résumé <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
 
       {/* Scroll cue */}

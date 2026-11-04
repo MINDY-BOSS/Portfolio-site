@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "A job application tracker that keeps every opportunity organized in one pipeline. Track company, role, status, notes, and deadlines, then follow each application from submission through interview, rejection, or offer.",
     stack: ["Next.js", "NestJS", "Prisma ORM", "TypeScript"],
     image: "/projects/jobtracker.PNG",
-    liveUrl: "https://job-app-tracker-9571.vercel.app/",
+    liveUrl: "https://job-app-tracker-one.vercel.app/",
   },
   /* Inactive boilerplate projects
   {

@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type FormEvent } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/useGsapContext";
 import { gsap, SplitText } from "@/lib/gsap";
 import { site } from "@/data/site";
 import MagneticButton from "@/components/MagneticButton";
+import { Send } from "lucide-react";
 
 // Ensure external links always have a protocol (so "linkedin.com/in/…" from
 // data/site.ts resolves as an absolute URL rather than a relative path).
@@ -35,6 +36,20 @@ function LinkedInIcon() {
 export default function CTA() {
   const root = useRef<HTMLElement>(null);
   const headline = useRef<HTMLHeadingElement>(null);
+
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(
+      [`Name: ${name}`, `Email: ${email}`, "", message].join("\n")
+    );
+
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+  };
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -99,6 +114,54 @@ export default function CTA() {
           LinkedIn ↗
         </MagneticButton>
       </div>
+
+      <form
+        onSubmit={handleContactSubmit}
+        className="mt-14 grid w-full max-w-3xl gap-6"
+      >
+        <div className="grid gap-6 sm:grid-cols-2">
+          <label className="grid gap-2 text-sm text-muted">
+            Your name
+            <input
+              autoComplete="name"
+              className="w-full border-b border-line bg-transparent py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent"
+              name="name"
+              placeholder="Name"
+              required
+            />
+          </label>
+          <label className="grid gap-2 text-sm text-muted">
+            Your email
+            <input
+              autoComplete="email"
+              className="w-full border-b border-line bg-transparent py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent"
+              name="email"
+              placeholder="you@example.com"
+              required
+              type="email"
+            />
+          </label>
+        </div>
+        <label className="grid gap-2 text-sm text-muted">
+          Your message
+          <textarea
+            className="min-h-32 w-full resize-y border-b border-line bg-transparent py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent"
+            name="message"
+            placeholder="What would you like to build?"
+            required
+            rows={4}
+          />
+        </label>
+        <div>
+          <button
+            className="inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3 text-sm font-medium text-background transition-transform hover:scale-[1.02]"
+            type="submit"
+          >
+            Send message
+            <Send aria-hidden="true" size={16} />
+          </button>
+        </div>
+      </form>
 
       {/* Résumé + email */}
       <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 text-muted">
